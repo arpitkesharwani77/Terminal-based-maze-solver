@@ -64,3 +64,17 @@ def mark_path(maze, path):
     for row, col in path:
         if maze[row][col] != START and maze[row][col] != END:
             maze[row][col] = PATH
+def main():
+    while True:
+        n = int(input("Enter the size of the maze (n x n): "))
+        wall_percentage = int(input("Enter the percentage of walls (<= 25%): "))
+        
+        if wall_percentage > 25:
+            print("Please enter a value between 0 to 25.")
+            continue  # Restart the loop
+        
+        maze = generate_maze(n, wall_percentage)
+        print("\nGenerated Maze:")
+        print_maze(maze)
+        
+        option = input("\nChoose an option: P (Generate path and Print), G (Generate another puzzle), E (Exit): ").upper()
