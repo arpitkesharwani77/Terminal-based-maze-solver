@@ -78,3 +78,35 @@ def main():
         print_maze(maze)
         
         option = input("\nChoose an option: P (Generate path and Print), G (Generate another puzzle), E (Exit): ").upper()
+        if option == 'P':
+            path = find_path(maze)
+            if path:
+                mark_path(maze, path)
+                print("\nPath Found:")
+                print_maze(maze)
+                
+                ask_option = input("\nChoose an option: G (Generate another puzzle), E (Exit): ").upper()
+                if ask_option == 'G':
+                    continue  # Restart the loop for generating another puzzle
+                elif ask_option == 'E':
+                    print("Exiting the game.")
+                    break  # Exit the loop and end the program
+                else:
+                    print("Invalid option. Exiting the game.")
+                    break  # Exit the loop and end the program
+                
+            else:
+                print("\nNo Path Found.")
+        elif option == 'G':
+            continue  # Restart the loop for generating another puzzle
+        elif option == 'E':
+            print("Exiting the game.")
+            
+            break  # Exit the loop and end the program
+        else:
+            print("Invalid option. Please enter P, G, or E.")
+            
+if __name__ == "__main__":
+    main()
+     
+        
